@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>preRegCheckList</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>preRegCheckList</h1>
+
+    <ul id="list"></ul>
+
+    <label class="field">
+      Other
+      <input id="note" type="text" placeholder="Type anything extra…">
+    </label>
+
+    <label class="field small">
+      Initials
+      <input id="initials" type="text" maxlength="5" placeholder="TJ">
+    </label>
+
+    <section class="output">
+      <h2>Output</h2>
+      <div id="preview" class="preview"></div>
+      <div class="actions">
+        <button id="copy">Copy</button>
+        <button id="reset" class="secondary">Reset</button>
+      </div>
+      <p id="status" class="status" aria-live="polite"></p>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
