@@ -8,9 +8,21 @@
 </head>
 <body>
   <main>
-    <h1>preRegCheckList</h1>
+    <header class="title">
+      <h1>preRegCheckList</h1>
+      <p class="byline">A Mega Tech &amp; Software Product</p>
+    </header>
 
-    <ul id="list"></ul>
+    <div id="list"></div>
+
+    <section class="add-box">
+      <h2>Add a custom box</h2>
+      <div class="add-row">
+        <input id="new-label" type="text" placeholder="Box label">
+        <input id="new-output" type="text" placeholder="Output text (optional)">
+        <button id="add">Add</button>
+      </div>
+    </section>
 
     <label class="field">
       Other
@@ -26,7 +38,12 @@
       <h2>Output</h2>
       <div id="preview" class="preview"></div>
       <div class="actions">
-        <button id="copy">Copy</button>
+        <button id="copy" class="icon-btn" title="Copy">
+          <img class="icon" src="assets/copy.png" alt="Copy">
+        </button>
+        <button id="copy-clear" class="icon-btn" title="Copy &amp; Clear">
+          <img class="icon" src="assets/copy.png" alt="Copy">&amp;<img class="icon" src="assets/trash.png" alt="Clear">
+        </button>
         <button id="reset" class="secondary">Reset</button>
       </div>
       <p id="status" class="status" aria-live="polite"></p>

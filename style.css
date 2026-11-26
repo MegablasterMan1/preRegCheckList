@@ -5,6 +5,9 @@
   --muted: #6b7280;
   --border: #d9dce1;
   --accent: #2563eb;
+  --custom: #9333ea;
+  --copy: #16a34a;
+  --copy-clear: #ea580c;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -14,6 +17,9 @@
     --muted: #9aa0a6;
     --border: #33373d;
     --accent: #60a5fa;
+    --custom: #c084fc;
+    --copy: #15803d;
+    --copy-clear: #c2410c;
   }
 }
 
@@ -35,10 +41,39 @@ main {
   border-radius: 10px;
 }
 
-h1 { margin: 0 0 16px; font-size: 1.5rem; }
+.title { text-align: center; margin-bottom: 20px; }
+h1 { margin: 0; font-size: 1.5rem; }
+.byline { margin: 4px 0 0; font-size: 0.85rem; color: var(--muted); font-style: italic; }
+
+/* Custom category heading */
+.category.custom h2 { color: var(--custom); border-bottom-color: var(--custom); }
+
+/* Bottom action colors */
+#copy { background: var(--copy); border-color: var(--copy); }
+#copy-clear { background: var(--copy-clear); border-color: var(--copy-clear); }
 h2 { margin: 0 0 8px; font-size: 1rem; color: var(--muted); }
 
-#list { list-style: none; padding: 0; margin: 0 0 20px; }
+#list { margin: 0 0 20px; }
+#list ul { list-style: none; padding: 0; margin: 0; }
+.category { margin-bottom: 18px; }
+.category h2 {
+  margin: 0 0 4px;
+  padding-bottom: 4px;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+}
+
+/* PNG icons are black: turn them white on filled buttons, and white in dark mode */
+.icon { width: 16px; height: 16px; vertical-align: middle; }
+button.icon-btn { display: inline-flex; align-items: center; gap: 4px; }
+button:not(.secondary):not(.danger) .icon { filter: invert(1); }
+@media (prefers-color-scheme: dark) {
+  button.secondary .icon, button.danger .icon { filter: invert(1); }
+}
+.value-input { width: 80px; padding: 4px 8px !important; }
 #list li label {
   display: flex;
   align-items: center;
@@ -47,7 +82,35 @@ h2 { margin: 0 0 8px; font-size: 1rem; color: var(--muted); }
   border-bottom: 1px solid var(--border);
   cursor: pointer;
 }
-#list input { width: 18px; height: 18px; accent-color: var(--accent); }
+#list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--border);
+}
+#list li label { flex: 1; border-bottom: none; }
+#list input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--accent); }
+#list .out { color: var(--muted); font-size: 0.85rem; }
+#list li.editing { flex-wrap: wrap; padding: 8px 0; }
+
+.row-actions { display: flex; gap: 6px; }
+button.small { padding: 4px 10px; font-size: 0.8rem; }
+button.danger { background: transparent; color: #dc2626; border-color: #dc2626; }
+
+input[type="text"] {
+  padding: 8px 10px;
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  min-width: 0;
+}
+#list li.editing input { flex: 1 1 140px; }
+
+.add-box { margin-bottom: 20px; }
+.add-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.add-row input { flex: 1 1 140px; }
 
 .field { display: block; margin-bottom: 12px; font-size: 0.9rem; color: var(--muted); }
 .field input {
@@ -75,7 +138,7 @@ h2 { margin: 0 0 8px; font-size: 1rem; color: var(--muted); }
 }
 .preview.empty { color: var(--muted); font-style: italic; }
 
-.actions { display: flex; gap: 8px; margin-top: 12px; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 button {
   padding: 8px 18px;
   font: inherit;
